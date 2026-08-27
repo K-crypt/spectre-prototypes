@@ -11,7 +11,7 @@ export default function Home() {
     <main>
       {/* ── HERO — the business problem, before the product architecture ── */}
       <HeroIntro>
-      <section className="mountain-hero hairline-b" aria-labelledby="hero-title">
+      <section className="mountain-hero hairline-b" id="hero" aria-labelledby="hero-title">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={withBasePath("/mountain-hero-scenery.webp")} alt="A quiet mountain range rising through fog at first light" />
         <div className="mountain-hero-scrim" />

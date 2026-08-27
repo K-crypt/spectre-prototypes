@@ -65,7 +65,7 @@ export function Nav() {
     >
       <div className="wrap" style={{ display: "flex", alignItems: "center", gap: 16, height: 60 }}>
         <Link
-          href="/"
+          href="/#hero"
           style={{ textDecoration: "none", color: onHome ? "#eee8df" : "var(--ink)", display: "flex", alignItems: "center", gap: 10 }}
           onClick={() => setOpen(false)}
         >

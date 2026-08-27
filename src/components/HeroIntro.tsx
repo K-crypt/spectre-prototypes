@@ -85,53 +85,57 @@ export default function HeroIntro({ children }: { children: React.ReactNode }) {
           left: 0;
           right: 0;
           bottom: 0;
-          height: 38%;
+          height: 48%;
           overflow: hidden;
           pointer-events: none;
           z-index: 10;
           mix-blend-mode: screen;
+          opacity: 0.92;
+          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.35) 24%, #000 58%);
+          mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.35) 24%, #000 58%);
         }
 
         .fog-layer {
           position: absolute;
-          bottom: -10%;
-          width: 160%;
-          height: 100%;
+          bottom: -14%;
+          width: 145%;
+          height: 112%;
           background: radial-gradient(
             ellipse at center,
-            rgba(${FOG_COLOR}, 0.16) 0%,
-            rgba(${FOG_COLOR}, 0.06) 45%,
-            rgba(${FOG_COLOR}, 0) 70%
+            rgba(${FOG_COLOR}, 0.34) 0%,
+            rgba(${FOG_COLOR}, 0.16) 42%,
+            rgba(${FOG_COLOR}, 0) 72%
           );
-          filter: blur(18px);
+          filter: blur(24px);
+          will-change: transform;
         }
 
         .fog-layer--1 {
-          left: -30%;
-          animation: driftA 46s ease-in-out infinite;
+          left: -36%;
+          animation: driftA 28s ease-in-out infinite;
         }
         .fog-layer--2 {
-          left: -10%;
-          bottom: 2%;
-          opacity: 0.7;
-          animation: driftB 63s ease-in-out infinite;
+          left: -6%;
+          bottom: -2%;
+          opacity: 0.66;
+          animation: driftB 41s ease-in-out infinite;
         }
         .fog-layer--3 {
-          left: -50%;
-          bottom: -4%;
-          opacity: 0.5;
-          animation: driftA 80s ease-in-out infinite reverse;
+          left: -46%;
+          bottom: -8%;
+          opacity: 0.48;
+          animation: driftA 57s ease-in-out infinite reverse;
         }
 
         @keyframes driftA {
-          0% { transform: translateX(0); }
-          50% { transform: translateX(4%); }
-          100% { transform: translateX(0); }
+          0% { transform: translate3d(-2%, 0, 0) scale(1); }
+          50% { transform: translate3d(10%, -3%, 0) scale(1.05); }
+          100% { transform: translate3d(-2%, 0, 0) scale(1); }
         }
         @keyframes driftB {
-          0% { transform: translateX(0); }
-          50% { transform: translateX(-3%); }
-          100% { transform: translateX(0); }
+          0% { transform: translate3d(5%, 1%, 0) scale(1.02); }
+          50% { transform: translate3d(-9%, -2%, 0) scale(1.07); }
+          100% { transform: translate3d(5%, 1%, 0) scale(1.02); }
         }
 
         @media (prefers-reduced-motion: reduce) {
