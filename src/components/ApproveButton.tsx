@@ -87,15 +87,15 @@ export default function ApproveButton({
           position: absolute;
           inset: -90%;
           z-index: 0;
+          --gold-trace: 0deg;
           background: conic-gradient(
-            from 0deg,
-            transparent 0deg 298deg,
-            rgba(255, 220, 145, 0.15) 312deg,
-            #f2bd5e 334deg,
-            #fff0bf 346deg,
+            from -90deg,
+            #d99b3f 0deg,
+            #f2bd5e var(--gold-trace),
+            transparent var(--gold-trace),
             transparent 360deg
           );
-          animation: goldOrbit 1.15s cubic-bezier(.35,.05,.3,1) 1 both;
+          animation: goldTrace 1.15s cubic-bezier(.35,.05,.3,1) 1 forwards;
         }
         .approve-btn--done::after {
           content: "";
@@ -113,8 +113,13 @@ export default function ApproveButton({
           text-shadow: 0 0 14px rgba(255, 220, 151, 0.42);
         }
 
-        @keyframes goldOrbit {
-          to { transform: rotate(1turn); }
+        @property --gold-trace {
+          syntax: '<angle>';
+          inherits: false;
+          initial-value: 0deg;
+        }
+        @keyframes goldTrace {
+          to { --gold-trace: 360deg; }
         }
 
         @keyframes pulseGlow {
