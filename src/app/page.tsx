@@ -3,29 +3,31 @@ import { WaitlistForm } from "@/components/interactive";
 import { RidgeEcho } from "@/components/atmosphere";
 import { RoundTable } from "@/components/roundtable";
 import { Day } from "@/components/day";
+import HeroIntro from "@/components/HeroIntro";
 import { withBasePath } from "@/lib/base-path";
 
 export default function Home() {
   return (
     <main>
       {/* ── HERO — the business problem, before the product architecture ── */}
+      <HeroIntro>
       <section className="mountain-hero hairline-b" aria-labelledby="hero-title">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={withBasePath("/mountain-hero-scenery.webp")} alt="A quiet mountain range rising through fog at first light" />
         <div className="mountain-hero-scrim" />
         <div className="mountain-hero-copy">
           <span className="mono rt-hero-kicker">PRIVATE OPERATING INTELLIGENCE</span>
-          <h1 className="display hero-line" id="hero-title">Your business already has the answers. They are scattered.</h1>
-          <p className="display hero-brand-line">Automate what can be. Focus on what can&apos;t.</p>
-          <p className="hero-positioning-note">Spectre connects the context across orders, capacity, inventory, messages, and people—then prepares the next decision for your approval.</p>
+          <h1 className="display hero-line" id="hero-title">Automate what can be.<br />Focus on what can&apos;t.</h1>
+          <p className="hero-positioning-note">Spectre learns how your company works, connects the context across it, and prepares the decisions that follow.</p>
           <strong className="display">They prepare. You decide.</strong>
           <div className="rt-hero-actions">
-            <a href="#access" className="btn btn-hard">Request a private working session</a>
-            <a href="#factory" className="btn btn-soft">See the manufacturing proof</a>
+            <a href="#access" className="btn btn-hard">Discuss a design partnership</a>
+            <a href="#proof" className="btn btn-soft">See the proof</a>
           </div>
           <div className="hero-compact-signal mono">YOUR WORKFLOWS · YOUR CONTEXT · YOUR FINAL YES</div>
         </div>
       </section>
+      </HeroIntro>
 
       <div className="landing-lower">
       {/* ── SIGNAL — real-world proof before the product explanation ── */}

@@ -7,7 +7,7 @@
    prefers-reduced-motion (everything visible, the tap still works). */
 
 import Link from "next/link";
-import { useState } from "react";
+import ApproveButton from "@/components/ApproveButton";
 
 const DOT: Record<string, string> = {
   pa: "var(--spectral)",
@@ -56,35 +56,17 @@ function Beat({
 }
 
 function ApproveMoment() {
-  const [done, setDone] = useState(false);
   return (
-    <div className={`card approve-moment ${done ? "is-done" : ""}`}>
-      {!done ? (
-        <>
-          <div className="stamp" style={{ marginBottom: 10 }}>STAGED · AWAITING THE ONLY TAP OF THE DAY</div>
-          <p style={{ fontSize: 14.5, margin: "0 0 14px" }}>
-            One batch needs you: tomorrow&apos;s post, 12 replies in your voice,
-            one purchase list. 14 items, prepared and logged.
-          </p>
-          <button className="btn btn-hard" onClick={() => setDone(true)}>
-            Approve
-          </button>
-          <div className="mono" style={{ fontSize: 10, color: "var(--ghost)", marginTop: 12 }}>
-            THIS IS WHERE SPECTRE STOPS AND YOUR JUDGMENT STARTS.
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="stamp" style={{ marginBottom: 10 }}>EXECUTED · 18:46</div>
-          <p style={{ fontSize: 14.5, margin: "0 0 6px" }}>
-            Published. Sent. Ordered. Logged — every action, attributable, reversible
-            where reversal exists.
-          </p>
-          <div className="mono" style={{ fontSize: 10, color: "var(--ghost)", marginTop: 10 }}>
-            THE SYSTEM FILES EVERYTHING BACK. TOMORROW IT IS SLIGHTLY BETTER.
-          </div>
-        </>
-      )}
+    <div className="card approve-moment">
+      <div className="stamp" style={{ marginBottom: 10 }}>STAGED · AWAITING THE ONLY TAP OF THE DAY</div>
+      <p style={{ fontSize: 14.5, margin: "0 0 14px" }}>
+        One batch needs you: tomorrow&apos;s post, 12 replies in your voice,
+        one purchase list. 14 items, prepared and logged.
+      </p>
+      <ApproveButton />
+      <div className="mono" style={{ fontSize: 10, color: "var(--ghost)", marginTop: 12 }}>
+        THIS IS WHERE SPECTRE STOPS AND YOUR JUDGMENT STARTS.
+      </div>
     </div>
   );
 }

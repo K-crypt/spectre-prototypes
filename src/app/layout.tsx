@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Spectral, Instrument_Sans, Spline_Sans_Mono, Michroma } from "next/font/google";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 import { Nav, Footer } from "@/components/ui";
 import { ChatWidget } from "@/components/chat-widget";
-import { PremiumScroll } from "@/components/premium-scroll";
+import SmoothScrollProvider from "@/components/SmoothScroll";
 import { withBasePath } from "@/lib/base-path";
 
 // Display serif swapped to Spectral 2026-08-04 (his call: Fraunces read
@@ -63,11 +64,12 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en" className={`${spectral.variable} ${instrument.variable} ${splineMono.variable} ${michroma.variable}`}>
       <body>
-        <PremiumScroll />
-        <Nav />
-        {children}
-        <Footer />
-        <ChatWidget />
+        <SmoothScrollProvider>
+          <Nav />
+          {children}
+          <Footer />
+          <ChatWidget />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

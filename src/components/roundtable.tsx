@@ -11,6 +11,7 @@ type Seat = {
   accent: string;
   position: string;
   cameraPan: string;
+  silhouette: string;
   risingImage: string;
   standingImage: string;
   status: string;
@@ -42,6 +43,7 @@ const SEATS: Seat[] = [
     accent: "var(--ochre)",
     position: "9.5%",
     cameraPan: "4px",
+    silhouette: "M160 493 C135 493 121 507 120 527 C119 548 130 567 147 578 L129 590 C103 604 89 628 82 653 L57 679 L57 741 C61 756 77 763 94 763 L252 763 C269 762 293 756 307 744 L286 718 C274 706 263 694 253 679 L246 633 C239 611 219 593 191 580 C205 567 214 548 213 527 C212 506 195 493 177 493 Z",
     risingImage: withBasePath("/table-hr-rising-luxury.webp"),
     standingImage: withBasePath("/table-hr-standing-sharp.webp"),
     status: "TAKING DESIGN PARTNERS",
@@ -69,6 +71,7 @@ const SEATS: Seat[] = [
     accent: "var(--archive)",
     position: "29.4%",
     cameraPan: "2px",
+    silhouette: "M478 499 C459 500 454 514 454 532 C454 551 463 568 477 578 L459 589 C431 602 410 624 403 652 L396 695 C400 714 412 724 429 728 L578 729 C590 728 602 724 607 716 L591 690 C581 674 574 651 569 629 C563 609 545 592 518 579 C529 568 532 551 529 531 C527 510 512 499 494 499 Z",
     risingImage: withBasePath("/table-researcher-rising-luxury.webp"),
     standingImage: withBasePath("/table-researcher-standing-sharp.webp"),
     status: "METHOD PROVEN",
@@ -96,6 +99,7 @@ const SEATS: Seat[] = [
     accent: "var(--spectral)",
     position: "50.3%",
     cameraPan: "0px",
+    silhouette: "M824 506 C806 507 798 521 799 540 C800 558 808 572 821 582 L803 592 C777 605 755 626 747 651 L728 692 C733 708 748 716 767 719 L914 719 C929 718 942 713 946 702 L927 676 C919 659 914 637 909 620 C902 602 884 589 859 581 C872 569 878 552 876 533 C874 514 859 506 842 506 Z",
     risingImage: withBasePath("/table-pa-rising-v2.webp"),
     standingImage: withBasePath("/table-pa-standing-v2.webp"),
     status: "RUNNING IN PRODUCTION",
@@ -123,6 +127,7 @@ const SEATS: Seat[] = [
     accent: "var(--steel)",
     position: "72%",
     cameraPan: "-2px",
+    silhouette: "M1191 500 C1172 501 1162 514 1162 533 C1162 552 1170 568 1184 579 L1165 591 C1138 604 1116 624 1109 650 L1071 697 C1075 716 1091 725 1110 729 L1266 730 C1285 729 1299 720 1304 707 L1288 679 C1282 657 1278 632 1270 615 C1262 598 1244 587 1221 579 C1234 566 1240 548 1238 530 C1236 511 1222 500 1205 500 Z",
     risingImage: withBasePath("/table-coo-rising-luxury.webp"),
     standingImage: withBasePath("/table-coo-standing-sharp.webp"),
     status: "IN PILOT BUILD",
@@ -150,6 +155,7 @@ const SEATS: Seat[] = [
     accent: "var(--clay)",
     position: "91%",
     cameraPan: "-4px",
+    silhouette: "M1500 502 C1479 503 1467 516 1467 535 C1467 554 1477 570 1491 580 L1472 592 C1444 607 1427 629 1420 655 L1397 686 C1384 701 1366 713 1355 729 L1357 758 C1371 771 1391 777 1410 778 L1578 778 C1600 777 1625 769 1640 755 L1625 724 C1612 706 1597 691 1587 677 L1580 632 C1574 610 1554 593 1527 580 C1541 568 1547 549 1545 531 C1543 513 1528 502 1512 502 Z",
     risingImage: withBasePath("/table-cmo-rising-luxury.webp"),
     standingImage: withBasePath("/table-cmo-standing-sharp.webp"),
     status: "RUNNING IN PRODUCTION",
@@ -285,6 +291,7 @@ export function RoundTable({ modulesOnly = false }: { modulesOnly?: boolean }) {
 
   const choose = (slug: Seat["slug"]) => {
     if (riseTimerRef.current) clearTimeout(riseTimerRef.current);
+    setHoveredSlug(null);
     setActiveSlug(slug);
     setRisePhase("rising");
     setDecisionMode("ready");
@@ -324,28 +331,39 @@ export function RoundTable({ modulesOnly = false }: { modulesOnly?: boolean }) {
         )}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <div key={activeSlug ?? "no-selection"} className="rt-selection-focus" aria-hidden />
-        {modulesOnly && <span className="rt-hover-glow" aria-hidden />}
+        {modulesOnly && hovered && !active && (
+          <svg className="rt-hover-silhouette" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" aria-hidden>
+            <path d={hovered.silhouette} fill={hovered.accent} />
+          </svg>
+        )}
         <div className="rt-photo-vignette" />
 
         {modulesOnly && (
-          <div className="rt-figure-hotspots" aria-label="Choose an executive from the table">
+          <svg className="rt-figure-hotspots" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" aria-label="Choose an executive from the table">
             {SEATS.map((seat) => (
-              <button
+              <path
                 key={seat.slug}
-                type="button"
-                style={{ "--figure-x": seat.position, "--seat-accent": seat.accent } as CSSProperties}
+                d={seat.silhouette}
+                fill="transparent"
+                style={{ "--seat-accent": seat.accent } as CSSProperties}
                 onClick={() => choose(seat.slug)}
                 onMouseEnter={() => setHoveredSlug(seat.slug)}
                 onMouseLeave={() => setHoveredSlug(null)}
                 onFocus={() => setHoveredSlug(seat.slug)}
                 onBlur={() => setHoveredSlug(null)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    choose(seat.slug);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
                 aria-label={`Select ${seat.name} from the executive table`}
-                aria-pressed={seat.slug === activeSlug}
-              >
-                <span>{seat.label}</span>
-              </button>
+                aria-current={seat.slug === activeSlug ? "true" : undefined}
+              />
             ))}
-          </div>
+          </svg>
         )}
 
         {!modulesOnly && <div className="rt-hero-copy">
