@@ -230,19 +230,19 @@ export default function HeroIntro({ children }: { children: React.ReactNode }) {
         }
         @keyframes cloudLightningLeft {
           0%, 18%, 22.8%, 100% { opacity: 0; transform: translate3d(0,0,0); }
-          18.6% { opacity: .16; }
+          18.6% { opacity: .19; }
           19.2% { opacity: .02; }
-          19.85% { opacity: .34; transform: translate3d(.3%,-.15%,0); }
+          19.85% { opacity: .4; transform: translate3d(.3%,-.15%,0); }
           20.55% { opacity: .05; }
-          21.5% { opacity: .19; }
+          21.5% { opacity: .22; }
         }
         @keyframes cloudLightningRight {
           0%, 57%, 61.2%, 100% { opacity: 0; }
-          57.45% { opacity: .12; }
+          57.45% { opacity: .14; }
           58.05% { opacity: .03; }
-          58.7% { opacity: .27; }
+          58.7% { opacity: .32; }
           59.35% { opacity: .04; }
-          60.25% { opacity: .13; }
+          60.25% { opacity: .16; }
         }
 
         @media (prefers-reduced-motion: reduce) {
