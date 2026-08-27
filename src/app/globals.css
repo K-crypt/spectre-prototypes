@@ -1435,7 +1435,7 @@ a.beat-who:hover { color: var(--ink); border-bottom-color: var(--hairline); }
   z-index: 30;
   color: #2a2119;
   text-shadow: 0 0 0 transparent;
-  animation: evening-illuminate 3s cubic-bezier(.2,.68,.2,1) 1.25s both;
+  animation: evening-illuminate 2.85s cubic-bezier(.2,.68,.2,1) 1.15s both;
 }
 @keyframes evening-illuminate {
   0% { color: #2a2119; text-shadow: 0 0 0 transparent; }

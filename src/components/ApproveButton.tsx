@@ -89,7 +89,7 @@ export default function ApproveButton({
           z-index: 0;
           --gold-trace: 0deg;
           background: conic-gradient(
-            from -90deg,
+            from 0deg,
             #d99b3f 0deg,
             #f2bd5e var(--gold-trace),
             transparent var(--gold-trace),
