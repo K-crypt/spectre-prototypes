@@ -108,14 +108,14 @@ export default function HeroIntro({ children }: { children: React.ReactNode }) {
           left: 0;
           right: 0;
           bottom: 0;
-          height: 48%;
+          height: 39%;
           overflow: hidden;
           pointer-events: none;
           z-index: 10;
           mix-blend-mode: screen;
-          opacity: 0.9;
-          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.35) 24%, #000 58%);
-          mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.35) 24%, #000 58%);
+          opacity: 0.82;
+          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.18) 19%, rgba(0,0,0,.78) 51%, #000 76%);
+          mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.18) 19%, rgba(0,0,0,.78) 51%, #000 76%);
         }
 
         .fog-layer {
@@ -126,31 +126,31 @@ export default function HeroIntro({ children }: { children: React.ReactNode }) {
           height: var(--fog-height);
           background:
             radial-gradient(
-              ellipse 21% 34% at 5% 67%,
+              ellipse 32% 23% at 4% 76%,
               rgba(${FOG_COLOR}, var(--fog-core)) 0%,
               rgba(${FOG_COLOR}, var(--fog-edge)) 46%,
               rgba(${FOG_COLOR}, 0) 76%
             ),
             radial-gradient(
-              ellipse 32% 48% at 27% 56%,
+              ellipse 45% 31% at 28% 67%,
               rgba(${FOG_COLOR}, var(--fog-core)) 0%,
               rgba(${FOG_COLOR}, var(--fog-edge)) 43%,
               rgba(${FOG_COLOR}, 0) 78%
             ),
             radial-gradient(
-              ellipse 18% 29% at 49% 74%,
+              ellipse 28% 20% at 50% 82%,
               rgba(${FOG_COLOR}, var(--fog-core)) 0%,
               rgba(${FOG_COLOR}, var(--fog-edge)) 50%,
               rgba(${FOG_COLOR}, 0) 77%
             ),
             radial-gradient(
-              ellipse 38% 38% at 77% 64%,
+              ellipse 51% 27% at 76% 73%,
               rgba(${FOG_COLOR}, var(--fog-core)) 0%,
               rgba(${FOG_COLOR}, var(--fog-edge)) 42%,
               rgba(${FOG_COLOR}, 0) 80%
             ),
             radial-gradient(
-              ellipse 23% 44% at 96% 51%,
+              ellipse 35% 29% at 97% 66%,
               rgba(${FOG_COLOR}, var(--fog-core)) 0%,
               rgba(${FOG_COLOR}, var(--fog-edge)) 45%,
               rgba(${FOG_COLOR}, 0) 79%
@@ -163,31 +163,31 @@ export default function HeroIntro({ children }: { children: React.ReactNode }) {
         }
 
         .fog-layer--1 {
-          --fog-bottom: -15%;
+          --fog-bottom: -29%;
           --fog-height: 116%;
-          --fog-core: 0.31;
-          --fog-edge: 0.14;
-          --fog-blur: 20px;
-          --fog-speed: 30s;
+          --fog-core: 0.28;
+          --fog-edge: 0.12;
+          --fog-blur: 24px;
+          --fog-speed: 34s;
         }
         .fog-layer--2 {
-          --fog-bottom: -2%;
+          --fog-bottom: -16%;
           --fog-height: 94%;
           --fog-core: 0.22;
           --fog-edge: 0.09;
           --fog-blur: 28px;
-          --fog-speed: 43s;
-          opacity: 0.76;
+          --fog-speed: 47s;
+          opacity: 0.7;
           animation-delay: -17s;
         }
         .fog-layer--3 {
-          --fog-bottom: -23%;
+          --fog-bottom: -37%;
           --fog-height: 128%;
           --fog-core: 0.19;
           --fog-edge: 0.07;
           --fog-blur: 34px;
-          --fog-speed: 59s;
-          opacity: 0.62;
+          --fog-speed: 63s;
+          opacity: 0.55;
           animation-delay: -38s;
         }
 
@@ -220,29 +220,29 @@ export default function HeroIntro({ children }: { children: React.ReactNode }) {
           background:
             radial-gradient(ellipse 27% 18% at 23% 29%, rgba(218,225,234,.46), transparent 72%),
             radial-gradient(ellipse 39% 22% at 35% 36%, rgba(187,198,214,.2), transparent 76%);
-          animation: cloudLightningLeft 13.7s linear 2.2s infinite;
+          animation: cloudLightningLeft 7.2s linear .8s infinite;
         }
         .cloud-flash--right {
           background:
             radial-gradient(ellipse 22% 16% at 72% 25%, rgba(215,221,231,.34), transparent 70%),
             radial-gradient(ellipse 34% 21% at 64% 35%, rgba(181,193,210,.16), transparent 78%);
-          animation: cloudLightningRight 19.3s linear 7.6s infinite;
+          animation: cloudLightningRight 10.6s linear 2.7s infinite;
         }
         @keyframes cloudLightningLeft {
-          0%, 68%, 70.2%, 72%, 100% { opacity: 0; transform: translate3d(0,0,0); }
-          68.5% { opacity: .16; }
-          69% { opacity: .02; }
-          69.45% { opacity: .34; transform: translate3d(.3%,-.15%,0); }
-          70% { opacity: .05; }
-          70.7% { opacity: .19; }
+          0%, 18%, 22.8%, 100% { opacity: 0; transform: translate3d(0,0,0); }
+          18.6% { opacity: .16; }
+          19.2% { opacity: .02; }
+          19.85% { opacity: .34; transform: translate3d(.3%,-.15%,0); }
+          20.55% { opacity: .05; }
+          21.5% { opacity: .19; }
         }
         @keyframes cloudLightningRight {
-          0%, 76%, 77.6%, 79%, 100% { opacity: 0; }
-          76.35% { opacity: .12; }
-          76.8% { opacity: .03; }
-          77.12% { opacity: .27; }
-          77.5% { opacity: .04; }
-          78% { opacity: .13; }
+          0%, 57%, 61.2%, 100% { opacity: 0; }
+          57.45% { opacity: .12; }
+          58.05% { opacity: .03; }
+          58.7% { opacity: .27; }
+          59.35% { opacity: .04; }
+          60.25% { opacity: .13; }
         }
 
         @media (prefers-reduced-motion: reduce) {

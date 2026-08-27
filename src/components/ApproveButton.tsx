@@ -13,7 +13,7 @@ export default function ApproveButton({
   label = 'Approve',
   doneLabel = 'Done',
   onApprove,
-  dimDurationMs = 1800,
+  dimDurationMs = 3800,
 }: ApproveButtonProps) {
   const [state, setState] = useState<'idle' | 'approving' | 'done'>('idle');
   const [dim, setDim] = useState(false);

@@ -1433,11 +1433,12 @@ a.beat-who:hover { color: var(--ink); border-bottom-color: var(--hairline); }
 .day.is-approved .day-close-line {
   position: relative;
   z-index: 30;
-  animation: evening-illuminate 2.4s cubic-bezier(.2,.75,.2,1) 180ms both;
+  animation: evening-illuminate 4.2s cubic-bezier(.2,.68,.2,1) 220ms both;
 }
 @keyframes evening-illuminate {
   0% { color: inherit; text-shadow: 0 0 0 transparent; }
-  42% { color: #fff0c9; text-shadow: 0 0 13px rgba(247,193,99,.72), 0 0 38px rgba(247,193,99,.34); }
+  28% { color: #e3d2b4; text-shadow: 0 0 8px rgba(247,193,99,.18); }
+  70% { color: #fff0c9; text-shadow: 0 0 13px rgba(247,193,99,.72), 0 0 38px rgba(247,193,99,.34); }
   100% { color: #f2dfbb; text-shadow: 0 0 18px rgba(247,193,99,.28); }
 }
 
