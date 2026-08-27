@@ -25,9 +25,11 @@ export default function ApproveButton({
     if (state !== 'idle') return;
     setState('approving');
     setDim(true);
-    onApprove?.();
 
-    timers.current.push(setTimeout(() => setState('done'), 280));
+    timers.current.push(setTimeout(() => {
+      setState('done');
+      onApprove?.();
+    }, 280));
     timers.current.push(setTimeout(() => setDim(false), dimDurationMs));
   }, [state, onApprove, dimDurationMs]);
 
@@ -52,6 +54,8 @@ export default function ApproveButton({
         .approve-btn {
           position: relative;
           z-index: 30;
+          overflow: hidden;
+          isolation: isolate;
           padding: 0.85rem 1.75rem;
           border-radius: 8px;
           border: 1px solid rgba(232, 180, 90, 0.35);
@@ -71,14 +75,46 @@ export default function ApproveButton({
             0 0 32px rgba(232, 180, 90, 0.55);
         }
         .approve-btn--done {
-          border-color: rgba(150, 200, 160, 0.4);
+          border-color: transparent;
+          background: #15110d;
+          color: #f6e5be;
           cursor: default;
           animation: none;
-          box-shadow: none;
+          box-shadow: 0 0 22px rgba(232, 180, 90, 0.18);
+        }
+        .approve-btn--done::before {
+          content: "";
+          position: absolute;
+          inset: -90%;
+          z-index: 0;
+          background: conic-gradient(
+            from 0deg,
+            transparent 0deg 298deg,
+            rgba(255, 220, 145, 0.15) 312deg,
+            #f2bd5e 334deg,
+            #fff0bf 346deg,
+            transparent 360deg
+          );
+          animation: goldOrbit 1.15s cubic-bezier(.35,.05,.3,1) 1 both;
+        }
+        .approve-btn--done::after {
+          content: "";
+          position: absolute;
+          inset: 1px;
+          z-index: 1;
+          border-radius: 6px;
+          background: linear-gradient(180deg, #19140f, #110e0b);
         }
         .approve-check {
+          position: relative;
+          z-index: 2;
           display: inline-flex;
           gap: 0.4em;
+          text-shadow: 0 0 14px rgba(255, 220, 151, 0.42);
+        }
+
+        @keyframes goldOrbit {
+          to { transform: rotate(1turn); }
         }
 
         @keyframes pulseGlow {
@@ -111,6 +147,13 @@ export default function ApproveButton({
           }
           .approve-btn--approving {
             box-shadow: none;
+          }
+          .approve-btn--done {
+            border-color: rgba(242, 189, 94, 0.7);
+          }
+          .approve-btn--done::before,
+          .approve-btn--done::after {
+            display: none;
           }
         }
       `}</style>

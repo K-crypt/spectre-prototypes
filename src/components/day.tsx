@@ -7,6 +7,7 @@
    prefers-reduced-motion (everything visible, the tap still works). */
 
 import Link from "next/link";
+import { useState } from "react";
 import ApproveButton from "@/components/ApproveButton";
 
 const DOT: Record<string, string> = {
@@ -55,7 +56,7 @@ function Beat({
   );
 }
 
-function ApproveMoment() {
+function ApproveMoment({ onApprove }: { onApprove: () => void }) {
   return (
     <div className="card approve-moment">
       <div className="stamp" style={{ marginBottom: 10 }}>STAGED · AWAITING THE ONLY TAP OF THE DAY</div>
@@ -63,7 +64,7 @@ function ApproveMoment() {
         One batch needs you: tomorrow&apos;s post, 12 replies in your voice,
         one purchase list. 14 items, prepared and logged.
       </p>
-      <ApproveButton />
+      <ApproveButton onApprove={onApprove} />
       <div className="mono" style={{ fontSize: 10, color: "var(--ghost)", marginTop: 12 }}>
         THIS IS WHERE SPECTRE STOPS AND YOUR JUDGMENT STARTS.
       </div>
@@ -72,8 +73,10 @@ function ApproveMoment() {
 }
 
 export function Day() {
+  const [approved, setApproved] = useState(false);
+
   return (
-    <div className="day">
+    <div className={`day ${approved ? "is-approved" : ""}`}>
       <div className="mono day-label">A DAY, DEMONSTRATED · FICTIONAL DATA · THE RHYTHM IS REAL</div>
 
       <Beat time="07:10" who="AI PA" slug="pa" title="Your inbox, triaged before you wake.">
@@ -114,7 +117,7 @@ export function Day() {
       </Beat>
 
       <Beat time="18:45" you title="The only tap of the day.">
-        <ApproveMoment />
+        <ApproveMoment onApprove={() => setApproved(true)} />
       </Beat>
 
       <div className="day-close">

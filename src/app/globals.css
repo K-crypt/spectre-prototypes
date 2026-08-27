@@ -1425,7 +1425,21 @@ a.beat-who:hover { color: var(--ink); border-bottom-color: var(--hairline); }
 .approve-moment.is-done { border-color: color-mix(in srgb, var(--ink) 30%, transparent); }
 
 .day-close { display: flex; align-items: baseline; gap: 36px; margin-top: 6px; padding-left: 20px; }
-.day-close-line { font-size: clamp(24px, 3vw, 32px); margin: 0; }
+.day-close-line {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 32px);
+  transition: color 700ms ease, text-shadow 900ms ease;
+}
+.day.is-approved .day-close-line {
+  position: relative;
+  z-index: 30;
+  animation: evening-illuminate 2.4s cubic-bezier(.2,.75,.2,1) 180ms both;
+}
+@keyframes evening-illuminate {
+  0% { color: inherit; text-shadow: 0 0 0 transparent; }
+  42% { color: #fff0c9; text-shadow: 0 0 13px rgba(247,193,99,.72), 0 0 38px rgba(247,193,99,.34); }
+  100% { color: #f2dfbb; text-shadow: 0 0 18px rgba(247,193,99,.28); }
+}
 
 /* proof plates — no boxes, scale + rules */
 .plate { padding: 34px 0 30px; border-top: 1px solid var(--hairline); }
@@ -4343,6 +4357,8 @@ main[style*="--accent"] input { background: rgba(0,0,0,.22); }
   cursor: pointer;
   pointer-events: all;
 }
+.rt-figure-hotspots path:focus,
+.rt-figure-hotspots path:focus-visible { outline: none; }
 
 /* A proper command rail: darker, taller and colour-coded on hover. */
 .rt-role-selector {
